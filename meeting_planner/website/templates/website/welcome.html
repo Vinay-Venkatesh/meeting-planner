@@ -1,0 +1,36 @@
+<!-- template inheritance -->
+{% extends "base.html" %}
+<!-- base template variable to substitute -->
+{% load static %}
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+    <h1>Welcome to the Meeting Planner!</h1>
+    <p>
+        This is the demo application
+        <em>
+            Developed using Django Framework
+        </em>
+    </p>
+
+    <img src="{% static 'website/calendar.png' %}" width="200px">
+
+    <h2>Meetings</h2>
+    <ul>
+        {% for meeting in meetings %}
+        <li>
+            <!-- Dynamic url in href -->
+<!--            <a href="/meetings/{{meeting.id}}">-->
+<!--                {{ meeting.title }}-->
+<!--            </a>-->
+
+            <!-- Dynamic url building -->
+            <!-- detail - is the name given the view urlpatterns -->
+            <a href=" {% url 'detail' meeting.id %}">
+                {{ meeting.title }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href=" {% url 'rooms' %}">Available Rooms</a>
+{% endblock %}

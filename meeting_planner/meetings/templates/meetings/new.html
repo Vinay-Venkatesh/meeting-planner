@@ -1,0 +1,16 @@
+<!-- template inheritance -->
+
+{% extends "base.html" %}
+
+{% block title %}New Meeting{% endblock %} <!-- base template variable to substitute -->
+
+{% block content %}
+<h1>Plan a new meeting</h1>
+<form method="post">
+    {% csrf_token %} <!-- mandatory token for post calls in django -->
+    <table>
+        {{ form }} <!-- context passed from view named new -->
+    </table>
+    <button type="submit" style="margin-top: 20px;">Create</button>
+</form>
+{% endblock %}
