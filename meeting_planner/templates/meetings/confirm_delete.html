@@ -1,0 +1,15 @@
+<!-- template inheritance -->
+<!-- meetings app templates -->
+{% extends "base.html" %}
+
+{% block title %}Delete Meeting: {% endblock %} <!-- base template variable to substitute -->
+
+{% block content %}
+<h1>Delete meeting</h1>
+<form method="post">
+    {% csrf_token %} <!-- mandatory token for post calls in django -->
+    <p> Are you sure? </p>
+    <button type="submit" style="margin-top: 20px;">Yes</button>
+    <a href="{% url 'detail' meeting.id %}">No, take me back</a>
+</form>
+{% endblock %}
